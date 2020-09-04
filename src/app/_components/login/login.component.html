@@ -1,0 +1,33 @@
+<div class="center one-page-card-container fill-page">
+  <mat-card class="center one-page-card">
+    <mat-card-content>
+      <mat-card-header>
+        <mat-card-title>
+          <h2>
+            Anmelden
+          </h2>
+        </mat-card-title>
+      </mat-card-header>
+
+      <div class="center">
+        <form #f="ngForm" (ngSubmit)="saveEntry(f)" [formGroup]="group" name="form" novalidate>
+          <mat-form-field>
+            <mat-label>Benutzername</mat-label>
+            <input matInput [(ngModel)]="user.username" formControlName="username">
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <mat-label>Passwort</mat-label>
+            <input matInput type="password" [(ngModel)]="user.password" formControlName="password">
+          </mat-form-field>
+          <br>
+          <mat-error *ngIf="message">
+            <p>{{message}}</p>
+          </mat-error>
+          <button class="login-button" [disabled]="!group.valid" mat-button name="submit" type="submit">Anmelden
+          </button>
+        </form>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
