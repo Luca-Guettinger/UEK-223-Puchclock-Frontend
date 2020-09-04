@@ -1,0 +1,60 @@
+<mat-card>
+  <h1>
+    Zeiteinträge
+  </h1>
+</mat-card>
+
+<mat-accordion *ngIf="entries">
+  <mat-expansion-panel *ngFor="let entry of entries">
+
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{entry.id}} - {{entry.category.name}}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <p>
+      ID: {{entry.id}}
+    </p>
+    <p>
+      Start: {{entry.checkIn | date: 'dd.MM.yyyy HH:mm'}}
+    </p>
+    <p>
+      Ende: {{entry.checkOut | date: 'dd.MM.yyyy HH:mm'}}
+    </p>
+    <p>
+      Kategorie: {{entry.category.name}} ({{entry.category.id}})
+    </p>
+  </mat-expansion-panel>
+</mat-accordion>
+<mat-card *ngIf="categories">
+  <h1>Zeiteintrag erstellen</h1>
+  <form #f="ngForm" (ngSubmit)="save(f)" [formGroup]="group" name="form">
+    <mat-form-field appearance="fill" class="center-container">
+      <mat-label>Kategorie</mat-label>
+      <mat-select [(ngModel)]="this.entry.category" [(value)]="this.entry.category" formControlName="categories">
+        <mat-option *ngFor="let category of categories" [value]="category">
+          {{category.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <mat-label>Start</mat-label>
+      <input required matInput [ngxMatDatetimePicker]="picker1" [(ngModel)]="entry.checkIn"
+             formControlName="checkIn">
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <ngx-mat-datetime-picker #picker1></ngx-mat-datetime-picker>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <mat-label>Ende</mat-label>
+      <input required matInput [ngxMatDatetimePicker]="picker2" [(ngModel)]="entry.checkOut"
+             formControlName="checkOut">
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <ngx-mat-datetime-picker #picker2></ngx-mat-datetime-picker>
+    </mat-form-field>
+    <br>
+    <button class="half login-button" [disabled]="!group.valid" mat-button name="submit" type="submit">Speichern
+    </button>
+  </form>
+</mat-card>
