@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "punchclock": {
+    "Puchclock-Frontend": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/punchclock",
+            "outputPath": "dist/Puchclock-Frontend",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -63,18 +63,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "punchclock:build"
+            "browserTarget": "Puchclock-Frontend:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "punchclock:build:production"
+              "browserTarget": "Puchclock-Frontend:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "punchclock:build"
+            "browserTarget": "Puchclock-Frontend:build"
           }
         },
         "test": {
@@ -112,19 +112,19 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "punchclock:serve"
+            "devServerTarget": "Puchclock-Frontend:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "punchclock:serve:production"
+              "devServerTarget": "Puchclock-Frontend:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "punchclock",
+  "defaultProject": "Puchclock-Frontend",
   "cli": {
-    "analytics": "48b761ad-d2d5-47c9-a8e0-8087d6271581"
+    "analytics": "cd650a1e-2e1f-456b-82a0-402cfff1c6d3"
   }
 }

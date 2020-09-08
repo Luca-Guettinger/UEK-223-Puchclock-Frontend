@@ -1,10 +1,10 @@
-<div class="center one-page-card-container fill-page">
+<div class="center one-page-card-container">
   <mat-card class="center one-page-card">
     <mat-card-content>
       <mat-card-header>
         <mat-card-title>
           <h2>
-            Anmelden
+            Registrieren
           </h2>
         </mat-card-title>
       </mat-card-header>
@@ -21,6 +21,15 @@
             <input matInput type="password" [(ngModel)]="user.password" formControlName="password">
           </mat-form-field>
           <br>
+          <mat-form-field>
+            <mat-label>Passwort wiederholen</mat-label>
+            <input matInput type="password" [(ngModel)]="passwordRepeat" formControlName="passwordRepeat">
+          </mat-form-field>
+          <br>
+          <mat-error *ngIf="message">
+            <p>{{message}}</p>
+            <p>{{group.errors}}</p>
+          </mat-error>
           <button class="login-button" [disabled]="!group.valid" mat-button name="submit" type="submit">Anmelden
           </button>
         </form>

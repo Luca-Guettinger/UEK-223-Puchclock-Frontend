@@ -10,7 +10,7 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('punchclock app is running!');
+    expect(page.getTitleText()).toEqual('Puchclock-Frontend app is running!');
   });
 
   afterEach(async () => {

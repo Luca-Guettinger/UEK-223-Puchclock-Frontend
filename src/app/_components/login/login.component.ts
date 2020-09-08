@@ -3,6 +3,7 @@ import {FormControl, FormGroup, FormGroupDirective, Validators} from '@angular/f
 import {User} from '../../_model/User';
 import {LoginService} from '../../_services/login/login.service';
 import {Router} from '@angular/router';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -10,15 +11,14 @@ import {Router} from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  constructor(private router: Router, private service: LoginService) {
+  constructor(private router: Router, private service: LoginService, private snackbar: MatSnackBar) {
   }
 
-  message = '';
   user = new User();
 
   group = new FormGroup({
     username: new FormControl(''),
-    password: new FormControl(''),
+    password: new FormControl('')
   }, Validators.required);
 
   ngOnInit(): void {
@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('token', authorization);
       this.router.navigateByUrl('home');
     }, error => {
-      this.message = 'Anmeldung Fehlgeschlagen';
+      this.snackbar.open('Anmeldung Fehlgeschlagen', 'Schliessen', {duration: 2000});
     });
   }
 }

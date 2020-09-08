@@ -20,7 +20,7 @@ export class CategoryService {
   public editCategories(category: Category): Observable<Category> {
     return this.httpClient.put<Category>('http://localhost:8081/categories', category);
   }
-  public deleteCategory(id: number): void {
-    this.httpClient.delete<Category>('http://localhost:8081/categories/' + id);
+  public deleteCategory(id: number): Observable<any> {
+    return this.httpClient.delete('http://localhost:8081/categories/' + id);
   }
 }
