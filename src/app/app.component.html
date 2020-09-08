@@ -1,1 +1,31 @@
-<router-outlet></router-outlet>
+<mat-drawer-container>
+  <mat-drawer opened #drawer mode="side">
+    <nav>
+      <mat-toolbar>
+        <mat-toolbar-row *ngIf="!login.isLoggedIn()">
+          <button class="sidenav-button" mat-button routerLink="/login" routerLinkActive="active">
+            <a>Anmelden</a>
+          </button>
+        </mat-toolbar-row>
+        <mat-toolbar-row *ngIf="!login.isLoggedIn()">
+          <button class="sidenav-button" mat-button routerLink="/register" routerLinkActive="active">
+            <a>Registrieren</a>
+          </button>
+        </mat-toolbar-row>
+
+
+        <mat-toolbar-row *ngIf="login.isLoggedIn()">
+          <button class="sidenav-button" mat-button routerLink="/home" routerLinkActive="active">
+            <a>Home</a>
+          </button>
+        </mat-toolbar-row>
+        <mat-toolbar-row *ngIf="login.isLoggedIn()">
+          <button class="sidenav-button" mat-button routerLink="/logout" routerLinkActive="active">
+            <a>Abmelden</a>
+          </button>
+        </mat-toolbar-row>
+      </mat-toolbar>
+    </nav>
+  </mat-drawer>
+  <router-outlet></router-outlet>
+</mat-drawer-container>

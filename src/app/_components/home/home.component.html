@@ -3,6 +3,7 @@
     Zeiteinträge
   </h1>
   <br>
+  <p *ngIf="entries && entries.length <= 0">Es existieren noch keine Einträge</p>
   <mat-accordion *ngIf="entries">
     <mat-expansion-panel *ngFor="let entry of entries">
 
@@ -37,7 +38,9 @@
   <h1>
     Kategorien
   </h1>
+  <p *ngIf="categories && categories.length <= 0">Es existieren noch keine Kategorien</p>
   <mat-accordion *ngIf="categories">
+
     <mat-expansion-panel *ngFor="let category of categories">
       <mat-expansion-panel-header>
         <mat-panel-title>
@@ -60,7 +63,7 @@
 
 <mat-card *ngIf="categories">
   <h1>Zeiteintrag erstellen</h1>
-  <form #f="ngForm" (ngSubmit)="saveEntry(f)" [formGroup]="entryGroup" name="form">
+  <form #f3="ngForm" (ngSubmit)="saveEntry(f3)" [formGroup]="entryGroup" name="form">
     <mat-form-field appearance="fill" class="center-container">
       <mat-label>Kategorie</mat-label>
       <mat-select [(ngModel)]="this.entry.category" [(value)]="this.entry.category" formControlName="categories">
@@ -89,7 +92,7 @@
 
 <mat-card>
   <h1>Kategorie erstellen</h1>
-  <form #f="ngForm" (ngSubmit)="saveCategory(f)" [formGroup]="categoryGroup" name="categoryForm">
+  <form #f4="ngForm" (ngSubmit)="saveCategory(f4)" [formGroup]="categoryGroup" name="categoryForm">
     <mat-form-field appearance="fill" class="center-container">
       <mat-label>Name</mat-label>
       <input matInput type="text" [(ngModel)]="this.category.name" formControlName="name">

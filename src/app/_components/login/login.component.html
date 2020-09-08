@@ -10,7 +10,7 @@
       </mat-card-header>
 
       <div class="center">
-        <form #f="ngForm" (ngSubmit)="saveEntry(f)" [formGroup]="group" name="form" novalidate>
+        <form #f2="ngForm" (ngSubmit)="saveEntry(f2)" [formGroup]="group" name="form" novalidate>
           <mat-form-field>
             <mat-label>Benutzername</mat-label>
             <input matInput [(ngModel)]="user.username" formControlName="username">

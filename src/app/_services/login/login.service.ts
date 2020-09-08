@@ -1,8 +1,8 @@
-import {Injectable} from '@angular/core';
-import {Router} from '@angular/router';
-import {HttpClient, HttpResponse} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {User} from '../../_model/User';
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { User } from '../../_model/User';
 
 @Injectable({
   providedIn: 'root'
@@ -29,9 +29,7 @@ export class LoginService {
   }
 
   public login(user: User): Observable<any> {
-    return this.httpClient
-      .post<any>('http://localhost:8081/login', user, {observe: 'response'})
-      ;
+    return this.httpClient.post<any>('http://localhost:8081/login', user, {observe: 'response'});
   }
 
   public logoutAndRedirect(): void {
