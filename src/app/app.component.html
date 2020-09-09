@@ -20,6 +20,16 @@
           </button>
         </mat-toolbar-row>
         <mat-toolbar-row *ngIf="login.isLoggedIn()">
+          <button class="sidenav-button" mat-button routerLink="/category" routerLinkActive="active">
+            <a>Kategorien</a>
+          </button>
+        </mat-toolbar-row>
+        <mat-toolbar-row *ngIf="login.isLoggedIn()">
+          <button class="sidenav-button" mat-button routerLink="/entry" routerLinkActive="active">
+            <a>Einträge</a>
+          </button>
+        </mat-toolbar-row>
+        <mat-toolbar-row *ngIf="login.isLoggedIn()">
           <button class="sidenav-button" mat-button routerLink="/logout" routerLinkActive="active">
             <a>Abmelden</a>
           </button>

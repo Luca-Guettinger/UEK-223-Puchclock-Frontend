@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {HomeComponent} from './_components/home/home.component';
 import {LoginComponent} from './_components/login/login.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatExpansionModule} from '@angular/material/expansion';
@@ -25,15 +24,20 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { CommonModule } from '@angular/common';
 import { LogoutComponent } from './_components/logout/logout.component';
 import { NotFoundComponent } from './_components/not-found/not-found.component';
+import { CategoryComponent } from './_components/category/category.component';
+import { EntryComponent } from './_components/entry/entry.component';
+import { HomeComponent } from './_components/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     LoginComponent,
     RegisterComponent,
     LogoutComponent,
     NotFoundComponent,
+    CategoryComponent,
+    HomeComponent,
+    EntryComponent,
   ],
   imports: [
     BrowserModule,
