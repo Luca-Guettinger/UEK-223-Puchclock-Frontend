@@ -5,7 +5,7 @@
   <p *ngIf="categories && categories.length <= 0">Es existieren noch keine Kategorien</p>
   <mat-accordion *ngIf="categories">
 
-    <mat-expansion-panel *ngFor="let category of categories">
+    <mat-expansion-panel *ngFor="let category of categories" (opened)="selectedId = category.id">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{category.id}} - {{category.name}}
@@ -14,9 +14,23 @@
       <p>
         ID: {{category.id}}
       </p>
-      <p>
-        Name: {{category.name}}
-      </p>
+
+      <div *ngIf="selectedId === category.id">
+        <form #f5="ngForm" (ngSubmit)="updateCategory(category, f5)" [formGroup]="categoryUpdateGroup" name="categoryUpdateForm">
+          <mat-form-field appearance="fill" class="center-container">
+            <mat-label>Name</mat-label>
+            <input matInput type="text" [(ngModel)]="this.category.name" formControlName="name">
+          </mat-form-field>
+          <br>
+          <button class="half login-button" [disabled]="!categoryGroup.valid" mat-button name="submit" type="submit">Speichern
+          </button>
+        </form>
+      </div>
+      <div *ngIf="selectedId !== category.id">
+        <p>
+          Name: {{category.name}}
+        </p>
+      </div>
       <p>
         <button mat-button (click)="deleteCategory(category)">Löschen</button>
       </p>

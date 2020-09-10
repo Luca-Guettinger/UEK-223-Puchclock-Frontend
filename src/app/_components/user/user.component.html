@@ -20,6 +20,18 @@
       <p>
         Passwort: {{user.password}}
       </p>
+      <div>
+        <form #f5="ngForm" (ngSubmit)="updateUser(user, f5)" [formGroup]="updateUserGroup" name="categoryUpdateForm">
+          <mat-form-field appearance="fill" class="center-container">
+            <mat-label>neues Passwort</mat-label>
+            <input matInput type="text" [(ngModel)]="this.newPw" formControlName="password">
+          </mat-form-field>
+          <br>
+          <button class="half login-button" [disabled]="!updateUserGroup.valid" mat-button name="submit" type="submit">Speichern
+          </button>
+        </form>
+      </div>
+
       <p>
         <button mat-button (click)="delete(user)">Löschen</button>
       </p>

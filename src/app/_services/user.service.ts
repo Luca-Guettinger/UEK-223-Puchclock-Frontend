@@ -3,6 +3,7 @@ import {Observable} from 'rxjs';
 import {Location} from '../_model/Location';
 import {HttpClient} from '@angular/common/http';
 import {User} from '../_model/User';
+import {Category} from '../_model/Category';
 
 @Injectable({
   providedIn: 'root'
@@ -23,5 +24,8 @@ export class UserService {
 
   public getMyself(): Observable<User> {
     return this.httpClient.get<User>('http://localhost:8081/users/me');
+  }
+  public updateUser(category: User): Observable<User> {
+    return this.httpClient.put<User>('http://localhost:8081/users', category);
   }
 }

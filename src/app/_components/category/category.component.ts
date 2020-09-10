@@ -16,6 +16,11 @@ export class CategoryComponent implements OnInit {
   }, Validators.required);
   public category: Category;
   public categories: Category[];
+  public updateForms: FormGroup[];
+  categoryUpdateGroup = new FormGroup({
+    name: new FormControl('')
+  }, Validators.required);
+  selectedId: number;
 
   constructor(
     private categoryService: CategoryService,
@@ -28,6 +33,7 @@ export class CategoryComponent implements OnInit {
     this.category = new Category();
     this.categoryService.loadCategories().subscribe(value => {
       this.categories = value;
+
     }, error => {
       if (error.status === 403) {
         this.snackBar.open('Du bist nicht angemeldet!', 'Close', {duration: 2000});
@@ -59,6 +65,12 @@ export class CategoryComponent implements OnInit {
       } else {
         this.snackBar.open('Kategorie mit der ID ' + category.id + ' konnte nicht gelöscht werden: ' + error.error.message);
       }
+    });
+  }
+
+  updateCategory(category: Category, f5: FormGroupDirective): void {
+    this.categoryService.updateCategory(category).subscribe(value => {
+      this.snackBar.open('Kategorie erfolgreich updated.', 'Schliessen', {duration: 2000});
     });
   }
 }

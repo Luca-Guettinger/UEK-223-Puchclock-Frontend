@@ -3,5 +3,14 @@
 </mat-card>
 <mat-card *ngIf="user">
   <h1>Hallo, {{user.username}}</h1>
-  <p>Passwort: {{user.password}}</p>
+  <form #f5="ngForm" (ngSubmit)="updateUser(f5)" [formGroup]="updateUserGroup" name="categoryUpdateForm">
+    <mat-form-field appearance="fill" class="center-container">
+      <mat-label>neues Passwort</mat-label>
+      <input matInput type="text" [(ngModel)]="this.newPw" formControlName="password">
+    </mat-form-field>
+    <br>
+    <button class="half login-button" [disabled]="!updateUserGroup.valid" mat-button name="submit" type="submit">Speichern
+    </button>
+  </form>
+  <p>Passwort (hash): {{user.password}}</p>
 </mat-card>

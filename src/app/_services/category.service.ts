@@ -16,7 +16,7 @@ export class CategoryService {
   public saveCategory(category: Category): Observable<Category> {
     return this.httpClient.post<Category>('http://localhost:8081/categories', category);
   }
-  public editCategories(category: Category): Observable<Category> {
+  public updateCategory(category: Category): Observable<Category> {
     return this.httpClient.put<Category>('http://localhost:8081/categories', category);
   }
   public deleteCategory(id: number): Observable<any> {
