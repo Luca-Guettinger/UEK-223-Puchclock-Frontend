@@ -1,10 +1,10 @@
 # Punchclock Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.0.
+Das Frontend für das Projekt: https://github.com/Luca-Guettinger/UEK-223-Punchclock-Backend
 
 ## Development server
-Run `npm install`
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.
-
-## Build
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+1. Konsole Öffnen
+1. zum Projekt Navigieren
+1. `npm install` 
+1. `ng serve` ausführen.  
+1. `http://localhost:4200/` Öffnen.  

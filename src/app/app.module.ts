@@ -18,7 +18,6 @@ import {MatOptionModule} from '@angular/material/core';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {TokenInterceptor} from './_interceptors/TokenInterceptor';
 import {RegisterComponent} from './_components/register/register.component';
-import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { CommonModule } from '@angular/common';
@@ -59,7 +58,6 @@ import { UserComponent } from './_components/user/user.component';
     CommonModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    NgxMaterialTimepickerModule,
     MatToolbarModule,
     MatSidenavModule
   ],
