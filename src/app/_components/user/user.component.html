@@ -1,0 +1,47 @@
+<mat-card>
+  <h1>
+    Benutzer
+  </h1>
+  <p *ngIf="users && users.length <= 0">Es existieren noch keine Standorte</p>
+  <mat-accordion *ngIf="users">
+
+    <mat-expansion-panel *ngFor="let user of users">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{user.id}} - {{user.username}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>
+        ID: {{user.id}}
+      </p>
+      <p>
+        Benutzername: {{user.username}}
+      </p>
+      <p>
+        Passwort: {{user.password}}
+      </p>
+      <p>
+        <button mat-button (click)="delete(user)">Löschen</button>
+      </p>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+</mat-card>
+
+<mat-card>
+  <h1>Benutzer erstellen</h1>
+  <form #f4="ngForm" (ngSubmit)="save(f4)" [formGroup]="group" name="categoryForm">
+    <mat-form-field appearance="fill" class="center-container">
+      <mat-label>Benutzername</mat-label>
+      <input matInput type="text" [(ngModel)]="this.user.username" formControlName="username">
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill" class="center-container">
+      <mat-label>Passwort</mat-label>
+      <input matInput type="password" [(ngModel)]="this.user.password" formControlName="password">
+    </mat-form-field>
+    <br>
+    <button class="half login-button" [disabled]="!group.valid" mat-button name="submit" type="submit">Speichern
+    </button>
+  </form>
+</mat-card>

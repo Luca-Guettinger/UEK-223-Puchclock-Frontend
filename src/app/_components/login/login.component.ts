@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, FormGroupDirective, Validators} from '@angular/forms';
 import {User} from '../../_model/User';
-import {LoginService} from '../../_services/login/login.service';
+import {LoginService} from '../../_services/login.service';
 import {Router} from '@angular/router';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
 
   saveEntry(f: FormGroupDirective): void {
     this.service.login(this.user).subscribe(value => {
+      console.log(value);
       const authorization = value.headers.get('Authorization');
       localStorage.setItem('token', authorization);
       this.router.navigateByUrl('home');

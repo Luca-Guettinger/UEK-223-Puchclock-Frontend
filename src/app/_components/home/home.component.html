@@ -1,3 +1,7 @@
 <mat-card>
-  <h1>Home</h1>
+  <h1>Startseite</h1>
+</mat-card>
+<mat-card *ngIf="user">
+  <h1>Hallo, {{user.username}}</h1>
+  <p>Passwort: {{user.password}}</p>
 </mat-card>

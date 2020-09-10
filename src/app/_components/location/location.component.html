@@ -1,0 +1,57 @@
+<mat-card>
+  <h1>
+    Standorte
+  </h1>
+  <p *ngIf="locations && locations.length <= 0">Es existieren noch keine Standorte</p>
+  <mat-accordion *ngIf="locations">
+
+    <mat-expansion-panel *ngFor="let location of locations">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{location.id}} - {{location.city}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>
+        ID: {{location.id}}
+      </p>
+      <p>
+        Strasse: {{location.streetName}} {{location.streetNumber}}
+      </p>
+      <p>
+        Stadt: {{location.city}}, {{location.postalCode}}
+      </p>
+      <p>
+        <button mat-button (click)="delete(location)">Löschen</button>
+      </p>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+</mat-card>
+
+<mat-card>
+  <h1>Standort erstellen</h1>
+  <form #f4="ngForm" (ngSubmit)="save(f4)" [formGroup]="locationGroup" name="categoryForm">
+    <mat-form-field appearance="fill" class="center-container">
+      <mat-label>Strasse</mat-label>
+      <input matInput type="text" [(ngModel)]="this.location.streetName" formControlName="streetName">
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill" class="center-container">
+      <mat-label>Hausnummer</mat-label>
+      <input matInput type="number" [(ngModel)]="this.location.streetNumber" formControlName="streetNumber">
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill" class="center-container">
+      <mat-label>Stadt</mat-label>
+      <input matInput type="text" [(ngModel)]="this.location.city" formControlName="city">
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill" class="center-container">
+      <mat-label>Postleitzahl</mat-label>
+      <input matInput type="number" [(ngModel)]="this.location.postalCode" formControlName="postalCode">
+    </mat-form-field>
+    <br>
+    <button class="half login-button" [disabled]="!locationGroup.valid" mat-button name="submit" type="submit">Speichern
+    </button>
+  </form>
+</mat-card>

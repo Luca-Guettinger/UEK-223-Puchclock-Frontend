@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import { Category } from '../../_model/Category';
-import { CategoryService } from '../../_services/category/category.service';
-import { LoginService } from '../../_services/login/login.service';
+import { CategoryService } from '../../_services/category.service';
+import { LoginService } from '../../_services/login.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -55,7 +55,7 @@ export class CategoryComponent implements OnInit {
       this.snackBar.open('Kategorie mit der ID ' + category.id + ' wurde erfolgreich gelöscht!');
     }, error => {
       if (error.status === 403) {
-        this.snackBar.open('Eine Kategorie kann nur gelöscht werden, wenn es keine Entries mit der Kategorie gibt.');
+        this.snackBar.open('Eine Kategorie kann nur gelöscht werden, wenn es keine Einträge mit der Kategorie gibt.');
       } else {
         this.snackBar.open('Kategorie mit der ID ' + category.id + ' konnte nicht gelöscht werden: ' + error.error.message);
       }

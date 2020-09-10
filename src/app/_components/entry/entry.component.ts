@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
-import { Entry } from '../../_model/Entry';
-import { Category } from '../../_model/Category';
-import { EntryService } from '../../_services/entry/entry.service';
-import { CategoryService } from '../../_services/category/category.service';
-import { LoginService } from '../../_services/login/login.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, FormGroupDirective, Validators} from '@angular/forms';
+import {Entry} from '../../_model/Entry';
+import {Category} from '../../_model/Category';
+import {EntryService} from '../../_services/entry.service';
+import {CategoryService} from '../../_services/category.service';
+import {LoginService} from '../../_services/login.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {Location} from '../../_model/Location';
+import {LocationService} from '../../_services/location.service';
 
 @Component({
   selector: 'app-entry',
@@ -17,17 +19,20 @@ export class EntryComponent implements OnInit {
   entryGroup = new FormGroup({
     checkIn: new FormControl(''),
     checkOut: new FormControl(''),
-    categories: new FormControl('')
+    categories: new FormControl(''),
+    location: new FormControl('')
   }, Validators.required);
 
   public entry: Entry;
   public categories: Category[];
   public entries: Entry[];
+  public locations: Location[];
 
   constructor(
     private entryService: EntryService,
     private categoryService: CategoryService,
     private loginService: LoginService,
+    private locationService: LocationService,
     private snackBar: MatSnackBar
   ) {
   }
@@ -45,7 +50,15 @@ export class EntryComponent implements OnInit {
 
     this.entryService.loadEntries().subscribe(value => {
       this.entries = value;
-      this.loginService.redirectOnLoggedOut();
+    }, error => {
+      if (error.status === 403) {
+        this.snackBar.open('Du bist nicht angemeldet!', 'Schliessen', {duration: 2000});
+        this.loginService.logoutAndRedirect();
+      }
+    });
+
+    this.locationService.load().subscribe(value => {
+      this.locations = value;
     }, error => {
       if (error.status === 403) {
         this.snackBar.open('Du bist nicht angemeldet!', 'Schliessen', {duration: 2000});
@@ -61,6 +74,7 @@ export class EntryComponent implements OnInit {
       this.snackBar.open('Zeiteintrag erfolgreich gespeichert.', 'Schliessen', {duration: 2000});
     });
   }
+
   deleteEntry(entry: Entry): void {
     this.entryService.deleteEntry(entry.id).subscribe(value => {
       const index = this.entries.indexOf(entry, 0);

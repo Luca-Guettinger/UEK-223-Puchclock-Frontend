@@ -27,6 +27,8 @@ import { NotFoundComponent } from './_components/not-found/not-found.component';
 import { CategoryComponent } from './_components/category/category.component';
 import { EntryComponent } from './_components/entry/entry.component';
 import { HomeComponent } from './_components/home/home.component';
+import { LocationComponent } from './_components/location/location.component';
+import { UserComponent } from './_components/user/user.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import { HomeComponent } from './_components/home/home.component';
     CategoryComponent,
     HomeComponent,
     EntryComponent,
+    LocationComponent,
+    UserComponent,
   ],
   imports: [
     BrowserModule,

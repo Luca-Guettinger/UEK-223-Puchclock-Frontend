@@ -30,6 +30,12 @@
         Kategorie: {{entry.category.name}} ({{entry.category.id}})
       </p>
       <p>
+        Benutzer: {{entry.user.username}}
+      </p>
+      <p>
+        Standort: {{entry.location.city}}, {{entry.location.streetName}} {{entry.location.streetNumber}}
+      </p>
+      <p>
         <button mat-button (click)="deleteEntry(entry)">Löschen</button>
       </p>
     </mat-expansion-panel>
@@ -44,6 +50,15 @@
       <mat-select [(ngModel)]="this.entry.category" [(value)]="this.entry.category" formControlName="categories">
         <mat-option *ngFor="let category of categories" [value]="category">
           {{category.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill" class="center-container">
+      <mat-label>Standort</mat-label>
+      <mat-select [(ngModel)]="this.entry.location" [(value)]="this.entry.location" formControlName="location">
+        <mat-option *ngFor="let location of locations" [value]="location">
+          {{location.city}}, {{location.streetName}} {{location.streetNumber}}
         </mat-option>
       </mat-select>
     </mat-form-field>
