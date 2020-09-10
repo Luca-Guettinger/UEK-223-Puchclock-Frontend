@@ -3,6 +3,7 @@ import {UserService} from '../../_services/user.service';
 import {User} from '../../_model/User';
 import {FormControl, FormGroup, FormGroupDirective, Validators} from '@angular/forms';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {LoginService} from '../../_services/login.service';
 
 @Component({
   selector: 'app-home',
@@ -13,10 +14,11 @@ export class HomeComponent implements OnInit {
   public user: User;
   public newPw: string;
   updateUserGroup = new FormGroup({
-    password: new FormControl('')
+    password: new FormControl(''),
+    username: new FormControl('')
   }, Validators.required);
 
-  constructor(private userService: UserService, private snackBar: MatSnackBar
+  constructor(private userService: UserService, private snackBar: MatSnackBar, private loginService: LoginService
   ) {
   }
 
@@ -32,9 +34,11 @@ export class HomeComponent implements OnInit {
       username: this.user.username,
       id: this.user.id
     }).subscribe(value => {
-      this.user = value;
+      this.user.password = value.password;
+      this.user.username = value.username;
       this.newPw = '';
-      this.snackBar.open('Passwort geändert.', 'Schliessen', {duration: 2000});
+      this.snackBar.open('Passwort geändert, bitte melden sie sich erneut an.', 'Schliessen', {duration: 2000});
+      this.loginService.logoutAndRedirect();
     }, error => {
       this.snackBar.open('Fehler beim änderen des Passwortes...', 'Schliessen', {duration: 2000});
     });

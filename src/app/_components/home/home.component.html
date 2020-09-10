@@ -5,11 +5,18 @@
   <h1>Hallo, {{user.username}}</h1>
   <form #f5="ngForm" (ngSubmit)="updateUser(f5)" [formGroup]="updateUserGroup" name="categoryUpdateForm">
     <mat-form-field appearance="fill" class="center-container">
-      <mat-label>neues Passwort</mat-label>
-      <input matInput type="text" [(ngModel)]="this.newPw" formControlName="password">
+      <mat-label>Benutzername</mat-label>
+      <input matInput type="text" [(ngModel)]="this.user.username" formControlName="username">
     </mat-form-field>
     <br>
-    <button class="half login-button" [disabled]="!updateUserGroup.valid" mat-button name="submit" type="submit">Speichern
+    <mat-form-field appearance="fill" class="center-container">
+      <mat-label>neues Passwort</mat-label>
+      <input matInput type="password" [(ngModel)]="this.newPw" formControlName="password">
+    </mat-form-field>
+
+    <br>
+    <button class="half login-button" [disabled]="!updateUserGroup.valid" mat-button name="submit" type="submit">
+      Speichern und neu Anmelden
     </button>
   </form>
   <p>Passwort (hash): {{user.password}}</p>
