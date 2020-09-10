@@ -7,7 +7,7 @@ import { LoginService } from './_services/login.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Puchclock-Frontend';
+  title = 'punchclock-Frontend';
 
   constructor(public login: LoginService) {
   }
