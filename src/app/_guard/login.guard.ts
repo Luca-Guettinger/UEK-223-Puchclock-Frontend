@@ -14,5 +14,4 @@ export class LoginGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return this.loginService.redirectOnLoggedOut();
   }
-
 }
