@@ -8,7 +8,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
-  styleUrls: ['./category.component.css']
+  styleUrls: ['../css/detail-page-style.css']
 })
 export class CategoryComponent implements OnInit {
   categoryGroup = new FormGroup({

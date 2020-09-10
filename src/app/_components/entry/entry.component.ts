@@ -12,7 +12,7 @@ import {LocationService} from '../../_services/location.service';
 @Component({
   selector: 'app-entry',
   templateUrl: './entry.component.html',
-  styleUrls: ['./entry.component.css']
+  styleUrls: ['../css/detail-page-style.css']
 })
 export class EntryComponent implements OnInit {
 

@@ -9,7 +9,7 @@ import {Location} from '../../_model/Location';
 @Component({
   selector: 'app-location',
   templateUrl: './location.component.html',
-  styleUrls: ['./location.component.css']
+  styleUrls: ['../css/detail-page-style.css']
 })
 export class LocationComponent implements OnInit {
 
